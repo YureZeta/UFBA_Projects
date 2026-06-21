@@ -1,0 +1,54 @@
+Problema: Salve os estudos de Anna
+
+Anna, uma colega de turma, está enfrentando dificuldades para interpretar palavras do português para o russo utilizando o método de transliteração. Esse processo consiste em converter sons da língua portuguesa para caracteres do alfabeto cirílico, preservando uma representação fonética aproximada.
+
+Como forma de ajudá-la, seus colegas mais experientes em programação decidiram desenvolver um pequeno tradutor simplificado.
+
+Esse tradutor realiza uma transliteração básica e não perfeita, mas suficiente para auxiliar Anna em seus estudos. O sistema será implementado utilizando listas e funções, convertendo palavras digitadas em português fonético para caracteres russos.
+
+Entrada::
+O programa deve solicitar ao usuário a seguinte entrada: "Que palavra você deseja transliterar?", em seguida o usuário deverá digitar uma palavra em português, escrita de forma fonética (em minúsculas), representando a pronúncia aproximada da palavra.
+
+Saída: programa deve exibir a seguinte mensagem: "A transliteração de {palavra_digitada} é: {resultado}", onde: {palavra_digitada} é a palavra informada pelo usuário, {resultado} é a palavra convertida para caracteres do alfabeto russo (cirílico)
+
+Exemplos:
+1.
+| Entrada | Saída esperada |
+| ------- | -------------- |
+| `shch`  | `щ`            |
+| `shcha` | `ща`           |
+| `shy`   | `шы`           |
+| `chsh`  | `чш`           |
+
+2.
+| Entrada    | Saída esperada |
+| ---------- | -------------- |
+| `shashlik` | `шашлик`       |
+| `chay`     | `чай`          |
+| `zhuk`     | `жук`          |
+| `tsar`     | `цар`          |
+| `yulya`    | `юля`          |
+
+3.
+| Entrada | Saída esperada |
+| ------- | -------------- |
+| `a`     | `а`            |
+| `b`     | `б`            |
+| `v`     | `в`            |
+| `g`     | `г`            |
+| `d`     | `д`            |
+
+4.
+| Entrada | Saída esperada |
+| ------- | -------------- |
+| `sh`    | `ш`            |
+| `ch`    | `ч`            |
+| `zh`    | `ж`            |
+| `ts`    | `ц`            |
+| `shch`  | `щ`            |
+| `yo`    | `ё`            |
+| `yu`    | `ю`            |
+| `ya`    | `я`            |
+| `ye`    | `е`            |
+
+
