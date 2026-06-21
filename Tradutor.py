@@ -1,50 +1,74 @@
-palavra = input("Digite a palavra soletrada em português (apenas em minúsculas): ").split() #Pede ao usuário que digite uma palavra nas línguas suportadas, sendo soletrada para facilitar os processos
+# Dicionário de regras fonéticas
+# Prioridade: dígrafos primeiro (sh, ch, etc.)
+regras = {
+    "shch": "щ",
+    "zh": "ж",
+    "ch": "ч",
+    "sh": "ш",
+    "ts": "ц",
+    "yo": "ё",
+    "yu": "ю",
+    "ya": "я",
+    "ye": "е",
 
-letras = palavra   #Cria uma lista do mesmo tamannho e elementos para ser modificada
+    # letras simples
+    "a": "а",
+    "b": "б",
+    "v": "в",
+    "g": "г",
+    "d": "д",
+    "z": "з",
+    "i": "и",
+    "y": "й",
+    "k": "к",
+    "l": "л",
+    "m": "м",
+    "n": "н",
+    "o": "о",
+    "p": "п",
+    "r": "р",
+    "s": "с",
+    "t": "т",
+    "u": "у",
+    "f": "ф",
+    "h": "х"
+}
 
-idioma = input("Digite o idioma que a frase deve ser traduzida: ") #Pede ao usuário que digite o idioma ao qual se deve traduzir a palavra
+#Função que translitera
+def transliterar(palavra):
 
-#Listas que impedem confusões de digitação
-RussianNames = ["Russo", "russo", "RUSSO"]
-BrasilianNames = ["Português", "português", "Portugues", "PORTUGÊS"]
+    resultado = []  # lista que armazenará os caracteres finais
+    i = 0            # índice de leitura da palavra
 
-#Alfabetos em listas
-russo = ["а", "б", "в", "г", "д", "е", "ё", "ж", "з", "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "ъ", "ы", "ь", "э", "ю", "я"]
-brasileiro = ["a", 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    # percorre toda a palavra
+    while i < len(palavra):
+        match = None  # armazena a tradução encontrada
 
-#Função que identifica a correspondência de cada letra
-def mapeia_letra(caracter):
-    c = caracter
-    if idioma in BrasilianNames:
-        for letra in range(26):
-            if brasileiro[letra] == c:
-                return letra
+        # tenta casar primeiro os maiores padrões (até 4 letras)
+        for tamanho in range(4, 0, -1):
+            trecho = palavra[i:i + tamanho]
+
+            # verifica se o trecho existe nas regras
+            if trecho in regras:
+                match = regras[trecho]
+                i += tamanho  # avança no índice
                 break
 
+        # se encontrou regra, adiciona a tradução
+        if match:
+            resultado.append(match)
+        else:
+            # caso não exista regra, mantém o caractere original
+            resultado.append(palavra[i])
+            i += 1
+
+    # junta tudo em uma única string
+    return "".join(resultado)
 
 
+# Entrada
+palavra = input("Que palavra você deseja transliterar? ").lower()
+#Cahamda da função que translitera a palavra
+traduzida = transliterar(palavra)
 
-#Função que trata as correspondências e gera a plavra traduzida para um idioma selecionado
-def traduzir(letrasT):
-    alfabeto = letrasT
-    traducao = []
-    if idioma in BrasilianNames:
-        for i in alfabeto:
-            traducao.append(brasileiro[i])
-    return traducao
-
-#Lista que recebe as letras da palavra
-letrasT = []
-
-for i in range(len(letras)):
-      caracter = letras[i]
-      letrasT.append(mapeia_letra(caracter))
-
-palavraT = traduzir(letrasT)
-
-for i in range (1 ,len(palavraT)):
-    palavraT[0] = palavraT[0] + palavraT[i]
-
-
-print("A palavra digitada foi: ", *palavra)
-print(f"Sua tradução em {idioma} é:", palavraT[0])
+print(f"A transliteração de {palavra} é: {traduzida}")
