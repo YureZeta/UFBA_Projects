@@ -41,6 +41,10 @@ for i in range(len(letras)):
       letrasT.append(mapeia_letra(caracter))
 
 palavraT = traduzir(letrasT)
-palavraT = .split()palavraT
+
+for i in range (1 ,len(palavraT)):
+    palavraT[0] = palavraT[0] + palavraT[i]
+
+
 print("A palavra digitada foi: ", *palavra)
-print(f"Sua tradução em {idioma} é:", *palavraT)
+print(f"Sua tradução em {idioma} é:", palavraT[0])
