@@ -6,7 +6,7 @@ idioma = input("Digite o idioma que a frase deve ser traduzida: ") #Pede ao usu�
 
 #Listas que impedem confusões de digitação
 RussianNames = ["Russo", "russo", "RUSSO"]
-BrasilianNames = ["Brasil", "brasil", "brazil", "BRASIL", "BRAZIL"]
+BrasilianNames = ["Português", "português", "Portugues", "PORTUGÊS"]
 
 #Alfabetos em listas
 russo = []
